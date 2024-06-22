@@ -1,0 +1,23 @@
+/*
+.header {
+  background-image: url("https://lumiere-a.akamaihd.net/v1/images/1e00fe67cddfda4dfb94f19d3103088c_4096x2730_7ea8fd27.jpeg?region=0,426,4093,2304&width=768");
+  background-size: cover;
+  background-position: center bottom;
+  height: 33vh;
+}
+  */
+.header {
+  background-image: url("https://lumiere-a.akamaihd.net/v1/images/1e00fe67cddfda4dfb94f19d3103088c_4096x2730_7ea8fd27.jpeg?region=0,426,4093,2304&width=768");
+  background-size: cover;
+  background-position: center bottom;
+  height: 30vh;
+}
+
+main {
+  position: absolute;
+  top: 20vh;
+  bottom: 0;
+  width: 100%;
+  z-index: 1;
+  background: linear-gradient(to bottom, transparent 0%, lightblue 15%);
+}

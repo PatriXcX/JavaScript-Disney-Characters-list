@@ -1,0 +1,40 @@
+.input_2 {
+  margin-top: 10px;
+  padding: 10px;
+  width: 99%; /* Ancho máximo menos el espacio para el padding */
+  box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+  border: 2px solid #0c7ae0ab; /* Borde gris claro */
+  width: 100%;
+}
+
+.section_1 {
+  width: 100%;
+  max-width: 700px; /* Set a max-width for the section */
+  box-sizing: border-box;
+  padding: 10px;
+  margin: 55px auto 0 auto; /* Center the section and add top margin */
+  text-align: center; /* Center align the section */
+}
+.js__searchBarInput {
+  width: calc(
+    100% - 120px
+  ); /* Reduce the width by the button's width + some margin */
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 4px;
+  font-size: 16px;
+}
+.js__btn {
+  width: 100px; /* Fixed width for the button */
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 4px;
+  font-size: 16px;
+  margin-left: 10px; /* Space between input and button */
+  background-color: #0c7ae0ab;
+  color: whitesmoke;
+}
+.js__searchBarInput::placeholder {
+  color: #007bff;
+  font-size: 12px;
+} /* Same color as button background */

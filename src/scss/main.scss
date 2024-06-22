@@ -2,6 +2,11 @@
   Aquí van tus estilos o los @import './tus/ficheros'
 */
 
+@import "./core/variables";
+@import "./layout/body";
+@import "./layout/header";
+@import "./layout/main";
+
 body {
   background-color: lightblue;
 }
