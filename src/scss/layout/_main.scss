@@ -12,7 +12,7 @@
   max-width: 700px; /* Set a max-width for the section */
   box-sizing: border-box;
   padding: 10px;
-  margin: 55px auto 0 auto; /* Center the section and add top margin */
+  margin: 60px auto 0 auto; /* Center the section and add top margin */
   text-align: center; /* Center align the section */
 }
 .js__searchBarInput {
@@ -38,3 +38,38 @@
   color: #007bff;
   font-size: 12px;
 } /* Same color as button background */
+
+.UlStyle {
+  display: flex;
+  flex-wrap: wrap; /* Permitir que los elementos se ajusten a la línea siguiente si es necesario */
+  justify-content: center; /* Distribuir los elementos uniformemente a lo largo del contenedor */
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.listStyles {
+  flex: 1 1 200px; /* Permitir que los elementos crezcan y se reduzcan, con un tamaño base de 200px */
+  margin: 10px; /* Espaciado alrededor de cada elemento */
+  box-sizing: border-box; /* Incluir padding y border en el tamaño total del elemento */
+  position: relative; /* Necesario para la superposición */
+  text-align: center; /* Centrar contenido dentro del elemento de la lista */
+  max-width: 220px; /* Máximo ancho de cada tarjeta */
+  border: 4px solid #3498db; /* Agregar borde alrededor de cada tarjeta */
+  border-radius: 10px; /* Bordes redondeados opcionales */
+  overflow: hidden; /* Asegurar que el contenido no se desborde */
+  background-color: #fff; /* Fondo blanco para la tarjeta */
+}
+.card_img {
+  width: 150px; /* Ajustar el ancho fijo de las imágenes */
+  height: 150px;
+  object-fit: cover; /* Asegurar que la imagen cubra el área designada manteniendo el aspecto */
+  border-radius: 10px;
+  margin-top: 10px;
+}
+.card__title {
+  margin-top: 10px;
+  font-size: 1.2em;
+  color: #0e8de2;
+  margin-bottom: 10px;
+}
