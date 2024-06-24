@@ -102,15 +102,15 @@ const getApiData = () => {
       // Verificar si se encontraron los índices y actualizar las imágenes
       if (irwinaIndex !== -1) {
         characters[irwinaIndex].imageUrl =
-          "https://via.placeholder.com/210x295/ffffff/555555/?text=Disney";
+          "//via.placeholder.com/210x295/ffffff/555555/?text=Disney";
       }
       if (arabellaIndex !== -1) {
         characters[arabellaIndex].imageUrl =
-          "https://via.placeholder.com/210x295/ffffff/555555/?text=Disney";
+          "//via.placeholder.com/210x295/ffffff/555555/?text=Disney";
       }
       if (ameliaIndex !== -1) {
         characters[ameliaIndex].imageUrl =
-          "https://via.placeholder.com/210x295/ffffff/555555/?text=Disney";
+          "//via.placeholder.com/210x295/ffffff/555555/?text=Disney";
       }
 
       paintCharacters();
