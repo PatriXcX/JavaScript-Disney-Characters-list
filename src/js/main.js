@@ -1,66 +1,22 @@
 "use strict";
 
-/*
-//QUERYS
-
+//QUERY SELECTOR
 const charactersElement = document.querySelector(".js__charactersCards");
+const favouritesUl = document.querySelector(".js__favourites");
 
 //DATOS
-
-const characters = [
-  {
-    name: "Achilles",
-    image:
-      "https://static.wikia.nocookie.net/disney/images/d/d3/Vlcsnap-2015-05-06-23h04m15s601.png",
-  },
-  {
-    name: "Abigail the Cow",
-    image:
-      "https://static.wikia.nocookie.net/disney/images/0/05/Fox-disneyscreencaps_com-901.jpg",
-  },
-];
+let characters = [];
+let favourites = [];
 
 //FUNCIONES
 
-------Pintar un elemento
-
-const renderCharacter = () => {
-  charactersElement.innerHTML += `
-    <li> ${characters[0].name}
-    <img src="${characters[0].image}" alt="${characters[0].name}">
-    </li>`;
-}
-renderCharacter();
-
---------
-
---------Pintar todos los elementos
-
-function renderCharacters() {
-  characters.forEach((character) => {
-    charactersElement.innerHTML += `
-        <li> ${character.name}
-        <img src="${character.image}" alt="${character.name}">
-        </li>`;
-  });
-}
-
-renderCharacters();
-
-*/
-
-let characters = [];
-
-//DATOS
-
 //Pintar personajes
 
-const charactersElement = document.querySelector(".js__charactersCards");
 const getCharacterHtmlCode = (character) => {
   let htmlCode = "";
-  htmlCode += "<li class= listStyles>";
+  htmlCode += `<li class="js__listStyles listStyles" data-id="${character._id}">`;
   htmlCode += `<img src="${character.imageUrl}" class="card_img" alt= "${character.name}">`;
-  htmlCode += `<h3 class= "card__title"> ${character.name}`;
+  htmlCode += `<h3 class= "card__title"> ${character.name}</h3>`;
   htmlCode += `</li>`;
 
   return htmlCode;
@@ -73,18 +29,72 @@ const paintCharacters = () => {
     charactersCode += getCharacterHtmlCode(character);
   }
   charactersElement.innerHTML = charactersCode;
+
+  //Fin parte pintar productos
+
+  const listAllStyles = document.querySelectorAll(".js__listStyles");
+
+  for (const eachCardLi of listAllStyles) {
+    eachCardLi.addEventListener("click", handleClickCard);
+  }
 };
 
-//get data from Api
+//Pintar favoritos
+
+function renderFavourites() {
+  let html = "";
+
+  for (const character of favourites) {
+    html += getCharacterHtmlCode(character);
+  }
+
+  favouritesUl.innerHTML = html;
+}
+
+//FUNCIONES DE EVENTOS
+
+function handleClickCard(ev) {
+  debugger;
+  console.log(ev.currentTarget);
+  ev.currentTarget.classList.toggle("favourite");
+
+  const clickedCharacterId = ev.currentTarget.dataset.id;
+  console.log(clickedCharacterId);
+
+  const clickedCharacterObj = characters.find(
+    (eachCharacterObj) => eachCharacterObj._id.toString() === clickedCharacterId
+  );
+  console.log(clickedCharacterObj);
+  // Meto la vaca en fav
+
+  const clickedfavouriteIndex = favourites.findIndex(
+    // Busca la vaca en favoritos (clickedfavouriteIndex <- la pos de la vaca den el array de fav)
+    (eachCharacterObj) => eachCharacterObj._id.toString() === clickedCharacterId
+  );
+
+  if (clickedfavouriteIndex === -1) {
+    // Si no esta
+    favourites.push(clickedCharacterObj); // Meto la vaca en fav
+
+    renderFavourites();
+  } else {
+    // Quitarlo del array de favoritos
+
+    favourites.splice(clickedfavouriteIndex, 1);
+
+    renderFavourites();
+  }
+
+  ev.currentTarget();
+}
+
+//FUNCIONES AL ARRANCAR PÁGINA
 
 const getApiData = () => {
   fetch("//api.disneyapi.dev/character?pageSize=50")
     .then((response) => response.json())
     .then((dataFromFetch) => {
       characters = dataFromFetch.data;
-      //paintCharacters();
-      //});
-      //};
 
       // Encontrar los índices de los personajes a cambiar
       const irwinaIndex = characters.findIndex(
@@ -96,8 +106,6 @@ const getApiData = () => {
       const ameliaIndex = characters.findIndex(
         (character) => character.name === "Amelia Duckworth"
       );
-
-      //characters.splice (irwinaIndex, 1, 'amalia');
 
       // Verificar si se encontraron los índices y actualizar las imágenes
       if (irwinaIndex !== -1) {
@@ -116,7 +124,5 @@ const getApiData = () => {
       paintCharacters();
     });
 };
-//Funciones al arrancar la página
-getApiData();
 
-//document.querySelector(".js_card").innerHTML = data.result;
+getApiData();
