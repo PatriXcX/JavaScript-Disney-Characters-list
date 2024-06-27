@@ -10,11 +10,12 @@
 
 .searchBar {
   width: 100%;
-  max-width: 700px; /* Set a max-width for the section */
+  max-width: 600px; /* Set a max-width for the section */
   box-sizing: border-box;
   padding: 10px;
-  margin: 60px auto 0 auto; /* Center the section and add top margin */
+  margin: 10px auto 0 auto; /* Center the section and add top margin */
   text-align: center; /* Center align the section */
+  opacity: 70%;
 }
 .js__searchBarInput {
   width: calc(
