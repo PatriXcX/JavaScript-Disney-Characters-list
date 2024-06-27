@@ -1,10 +1,19 @@
 "use strict";
 
 //QUERY SELECTOR
+
 const charactersElement = document.querySelector(".js__charactersCards");
 const favouritesUl = document.querySelector(".js__favourites");
 
+const searchInput = document.querySelector(".js__searchBar");
+const searchButton = document.querySelector(".js__searchButton");
+
+const clearFavouritesButton = document.querySelector(
+  ".js__clearFavouritesButton"
+);
+
 //DATOS
+
 let characters = [];
 let favourites = [];
 
@@ -51,7 +60,14 @@ function renderFavourites() {
   favouritesUl.innerHTML = html;
 }
 
-//FUNCIONES DE EVENTOS
+//Borrar favoritos
+
+function handleClearFavourites() {
+  favourites = [];
+  renderFavourites();
+}
+
+// FUNCIONES DE EVENTOS (HANDLER)
 
 function handleClickCard(ev) {
   debugger;
@@ -64,7 +80,7 @@ function handleClickCard(ev) {
   const clickedCharacterObj = characters.find(
     (eachCharacterObj) => eachCharacterObj._id.toString() === clickedCharacterId
   );
-  console.log(clickedCharacterObj);
+
   // Meto la vaca en fav
 
   const clickedfavouriteIndex = favourites.findIndex(
@@ -76,11 +92,15 @@ function handleClickCard(ev) {
     // Si no esta
     favourites.push(clickedCharacterObj); // Meto la vaca en fav
 
+    localStorage.setItem("favs", JSON.stringify(favourites));
+
     renderFavourites();
   } else {
     // Quitarlo del array de favoritos
 
     favourites.splice(clickedfavouriteIndex, 1);
+
+    localStorage.setItem("favs", JSON.stringify(favourites));
 
     renderFavourites();
   }
@@ -88,7 +108,23 @@ function handleClickCard(ev) {
   ev.currentTarget();
 }
 
-//FUNCIONES AL ARRANCAR PÁGINA
+function handleClickSearch(ev) {
+  ev.preventDefault();
+
+  const searchedcharacters = searchInput.value;
+
+  console.log(searchedcharacters);
+
+  fetch(`//api.disneyapi.dev/character?pageSize=50&name=${searchedcharacters}`)
+    .then((response) => response.json())
+    .then((dataFromOtherFetch) => {
+      characters = dataFromOtherFetch.data;
+
+      paintCharacters();
+    });
+}
+
+//CÓDIGO AL CARGAR LA PÁGINA
 
 const getApiData = () => {
   fetch("//api.disneyapi.dev/character?pageSize=50")
@@ -125,4 +161,15 @@ const getApiData = () => {
     });
 };
 
+const favsFromLS = JSON.parse(localStorage.getItem("favs"));
+if (favsFromLS !== null) {
+  favourites = favsFromLS;
+
+  renderFavourites();
+}
+
 getApiData();
+
+//EVENTOS
+searchButton.addEventListener("click", handleClickSearch);
+clearFavouritesButton.addEventListener("click", handleClearFavourites);

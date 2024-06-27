@@ -1,23 +1,25 @@
 <main class="main">
 
     <section class="searchBar">
-
-        <input class="js__searchBarInput input_2" type="text" name="name" id="name" placeholder="Example:Olu Mei">
-        <button class="js__btn input_2">Search</button>
+        <form>
+            <input class=" js__searchBar js__searchBarInput input_2" type="text" name="name" id="name"
+                placeholder="Example:Olu Mei">
+            <button class=" js__searchButton js__btn input_2">Search</button>
+        </form>
     </section>
 
     <section>
-
         <div class="div">
             <section class="charactersList">
-                <h2>Characters</h2>
-                <ul class="js__charactersCards UlStyle">
+                <h2>Favourites </i></h2>
+                <ul class="js__favourites UlStyle">
                 </ul>
+                <button type="button" class="js__clearFavouritesButton clearButton">Clear All</button>
             </section>
 
             <section class="charactersList">
-                <h2>Favourites</h2>
-                <ul class="js__favourites UlStyle">
+                <h2>Characters <i class="fas fa-heart" style="color: text-color;"></i> </h2>
+                <ul class="js__charactersCards UlStyle">
                 </ul>
             </section>
         </div>
