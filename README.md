@@ -17,4 +17,6 @@ Para iniciar este proyecto, sigue los siguientes pasos:
    npm install
    ```
 4. Visualiza el proyecto
+   ```
    npm run dev
+   ```
