@@ -22,6 +22,11 @@ let favourites = [];
 //Pintar personajes
 
 const getCharacterHtmlCode = (character) => {
+  if (character.imageUrl === undefined) {
+    character.imageUrl =
+      "//via.placeholder.com/210x295/ffffff/555555/?text=Disney";
+  }
+
   let htmlCode = "";
   htmlCode += `<li class="js__listStyles listStyles" data-id="${character._id}">`;
   htmlCode += `<img src="${character.imageUrl}" class="card_img" alt= "${character.name}">`;
@@ -131,31 +136,6 @@ const getApiData = () => {
     .then((response) => response.json())
     .then((dataFromFetch) => {
       characters = dataFromFetch.data;
-
-      // Encontrar los índices de los personajes a cambiar
-      const irwinaIndex = characters.findIndex(
-        (character) => character.name === "Irwina Allen"
-      );
-      const arabellaIndex = characters.findIndex(
-        (character) => character.name === "Arabella"
-      );
-      const ameliaIndex = characters.findIndex(
-        (character) => character.name === "Amelia Duckworth"
-      );
-
-      // Verificar si se encontraron los índices y actualizar las imágenes
-      if (irwinaIndex !== -1) {
-        characters[irwinaIndex].imageUrl =
-          "//via.placeholder.com/210x295/ffffff/555555/?text=Disney";
-      }
-      if (arabellaIndex !== -1) {
-        characters[arabellaIndex].imageUrl =
-          "//via.placeholder.com/210x295/ffffff/555555/?text=Disney";
-      }
-      if (ameliaIndex !== -1) {
-        characters[ameliaIndex].imageUrl =
-          "//via.placeholder.com/210x295/ffffff/555555/?text=Disney";
-      }
 
       paintCharacters();
     });
