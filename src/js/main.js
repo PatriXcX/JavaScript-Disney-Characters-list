@@ -7,7 +7,7 @@ const favouritesUl = document.querySelector(".js__favourites");
 
 const searchInput = document.querySelector(".js__searchBar");
 const searchButton = document.querySelector(".js__searchButton");
-
+const logBtn = document.querySelector(".js__log");
 const clearFavouritesButton = document.querySelector(
   ".js__clearFavouritesButton"
 );
@@ -30,7 +30,7 @@ const getCharacterHtmlCode = (character) => {
   let htmlCode = "";
   htmlCode += `<li class="js__listStyles listStyles" data-id="${character._id}">`;
   htmlCode += `<img src="${character.imageUrl}" class="card_img" alt= "${character.name}">`;
-  htmlCode += `<h3 class= "card__title"> ${character.name}</h3>`;
+  htmlCode += `<a href= "${character.sourceUrl}" class= "card__title"> ${character.name} </a>`;
   htmlCode += `</li>`;
 
   return htmlCode;
@@ -129,6 +129,14 @@ function handleClickSearch(ev) {
     });
 }
 
+const printLog = () => {
+  let html = "";
+
+  for (const character of favourites) {
+    console.log(character.name);
+  }
+};
+
 //CÓDIGO AL CARGAR LA PÁGINA
 
 const getApiData = () => {
@@ -153,3 +161,4 @@ getApiData();
 //EVENTOS
 searchButton.addEventListener("click", handleClickSearch);
 clearFavouritesButton.addEventListener("click", handleClearFavourites);
+logBtn.addEventListener("click", printLog);
