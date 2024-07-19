@@ -69,6 +69,7 @@ function renderFavourites() {
 
 function handleClearFavourites() {
   favourites = [];
+  localStorage.setItem("favs", JSON.stringify(favourites));
   renderFavourites();
 }
 
