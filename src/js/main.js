@@ -30,7 +30,7 @@ const getCharacterHtmlCode = (character) => {
   let htmlCode = "";
   htmlCode += `<li class="js__listStyles listStyles" data-id="${character._id}">`;
   htmlCode += `<img src="${character.imageUrl}" class="card_img" alt= "${character.name}">`;
-  htmlCode += `<a href= "${character.sourceUrl}" class= "card__title"> ${character.name} </a>`;
+  htmlCode += `<a href= "${character.sourceUrl}" class= "card__title" target="_blank"> ${character.name} </a>`;
   htmlCode += `</li>`;
 
   return htmlCode;
