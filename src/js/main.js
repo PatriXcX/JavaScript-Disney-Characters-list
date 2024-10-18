@@ -7,7 +7,7 @@ const favouritesUl = document.querySelector(".js__favourites");
 
 const searchInput = document.querySelector(".js__searchBar");
 const searchButton = document.querySelector(".js__searchButton");
-const logBtn = document.querySelector(".js__log");
+
 const clearFavouritesButton = document.querySelector(
   ".js__clearFavouritesButton"
 );
@@ -129,15 +129,6 @@ function handleClickSearch(ev) {
       paintCharacters();
     });
 }
-
-const printLog = () => {
-  let html = "";
-
-  for (const character of favourites) {
-    console.log(character.name);
-  }
-};
-
 //CÓDIGO AL CARGAR LA PÁGINA
 
 const getApiData = () => {
